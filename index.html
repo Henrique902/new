@@ -1,4 +1,3 @@
-<iframe srcdoc="
 <!DOCTYPE html>
 <html lang='pt'>
 <head>
@@ -6,7 +5,6 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Carrossel Elementor</title>
 
-    <!-- Estilos do carrossel -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,7 +15,7 @@
             align-items: center;
             height: 100vh;
             background: #f4f4f4;
-            overflow: hidden; /* Impede o aparecimento de barras de rolagem */
+            overflow: hidden;
         }
 
         .carousel-container {
@@ -36,7 +34,7 @@
         .carousel img {
             width: 100%;
             height: auto;
-            object-fit: cover; /* Garante que as imagens cubram o espaço sem distorção */
+            object-fit: cover;
             border-radius: 10px;
         }
 
@@ -108,7 +106,6 @@
     </div>
 </div>
 
-<!-- Script para o funcionamento do carrossel -->
 <script>
     let currentIndex = 0;
     const images = document.querySelectorAll('.carousel img');
@@ -117,40 +114,34 @@
     const nextButton = document.querySelector('.carousel-next');
     const carousel = document.querySelector('.carousel');
 
-    // Função para atualizar o carrossel
     function updateCarousel() {
-        // Loop contínuo
         if (currentIndex >= images.length) {
             currentIndex = 0;
         } else if (currentIndex < 0) {
             currentIndex = images.length - 1;
         }
 
-        // Atualiza a posição das imagens
         carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+
         dots.forEach(dot => dot.classList.remove('active'));
         dots[currentIndex].classList.add('active');
     }
 
-    // Navegação anterior
     prevButton.addEventListener('click', () => {
         currentIndex--;
         updateCarousel();
     });
 
-    // Navegação próxima
     nextButton.addEventListener('click', () => {
         currentIndex++;
         updateCarousel();
     });
 
-    // Autoplay com loop contínuo
     setInterval(() => {
         currentIndex++;
         updateCarousel();
-    }, 3000); // Trocar de imagem a cada 3 segundos
+    }, 3000);
 
-    // Navegação pelos pontos
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             currentIndex = index;
@@ -161,4 +152,3 @@
 
 </body>
 </html>
-" width="600" height="400" frameborder="0"></iframe>
